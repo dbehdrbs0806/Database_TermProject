@@ -31,8 +31,9 @@ document.getElementById("login-form").addEventListener("submit", async function 
         const result = await response.json(); // 서버 응답 파싱
 
         if (response.ok) {
-            alert("로그인 성공!"); // 성공 메시지 표시
-            window.location.href = "/movies"; // 성공 시 영화 선택 페이지로 이동
+            alert("로그인 성공!");               // 성공 메시지 표시
+            window.location.href = "/movies";  // 성공 시 영화 선택 페이지로 이동 /movies로
+
         } else {
             // 서버에서 반환된 에러 메시지 표시
             const errorMessage = document.createElement("p");

@@ -30,4 +30,7 @@ public class Member {
 
     @Column(name = "카드번호", length = 26, nullable = false)
     private String cardNumber;
+
+    @Column(name = "승인여부")
+    private int isApproved;
 }

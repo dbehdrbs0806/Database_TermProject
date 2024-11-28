@@ -24,7 +24,8 @@ document.getElementById("signup-form").addEventListener("submit", async function
         name: name,              // 회원 이름
         phoneNumber: phone,      // 휴대전화
         grade: "SILVER",         // 기본 등급 설정
-        cardNumber: cardNumber   // 카드번호
+        cardNumber: cardNumber,  // 카드번호
+        isApproved: 0            // 승인 여부 (0: 미승인)
     };
 
     try {
@@ -40,7 +41,7 @@ document.getElementById("signup-form").addEventListener("submit", async function
         const result = await response.json();
 
         if (response.ok) {
-            alert(result.message);
+            alert("회원가입 요청이 접수되었습니다. 관리자의 승인을 기다려주세요.");
             window.location.href = "/"; // 성공 시 로그인 페이지로 이동
         } else {
             alert(result.message || "회원가입에 실패했습니다.");
