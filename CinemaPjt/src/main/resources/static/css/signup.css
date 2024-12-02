@@ -12,17 +12,38 @@ header {
     display: flex;
     justify-content: center; /* 텍스트를 중앙으로 정렬 */
     align-items: center;
+    position: relative; /* 버튼 배치 기준 */
     background-color: #43a047; /* 상단바 초록색 */
     color: white;
     padding: 15px 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+header button {
+    position: absolute; /* 헤더 기준 위치 고정 */
+    top: 25px; /* 상단 여백 */
+    right: 15px; /* 우측 여백 */
+    background-color: #2e7d32;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+header button:hover {
+    background-color: #1b5e20; /* 버튼 호버 시 색상 */
 }
 
 .website-name {
-    font-size: 2.5rem; /* 글씨 크기 증가 */
+    font-size: 2.5rem; /* 헤더 중앙의 제목 크기 */
     font-weight: bold;
     margin: 0;
     text-align: center;
-    letter-spacing: 2px; /* 글자 간격 조정 */
+    letter-spacing: 2px; /* 글자 간격 */
+    flex: 1;
 }
 
 /* 회원가입 박스 */
@@ -31,8 +52,8 @@ header {
     padding: 30px;
     border-radius: 15px; /* 둥근 모서리 */
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); /* 그림자 강조 */
-    width: 90%; /* 기본적으로 화면 비율에 맞춤 */
-    max-width: 450px; /* 최대 너비 제한 */
+    width: 90%; /* 화면 비율에 맞춤 */
+    max-width: 450px; /* 최대 너비 */
     margin: 20px auto; /* 중앙 정렬 */
     text-align: center;
     box-sizing: border-box; /* 패딩 포함 너비 계산 */
@@ -49,15 +70,15 @@ header {
 .signup-box form {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* 입력 요소 간 간격 적절히 조정 */
+    gap: 15px; /* 입력 요소 간 간격 */
     width: 100%;
-    box-sizing: border-box; /* 패딩 포함 너비 계산 */
+    box-sizing: border-box;
 }
 
 .signup-box label {
     font-size: 1.1rem; /* 글씨 크기 약간 증가 */
     color: #2e7d32;
-    text-align: left; /* 텍스트 왼쪽 정렬 */
+    text-align: left;
     margin-left: 5px;
 }
 
@@ -66,7 +87,7 @@ header {
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 100%; /* 입력 창의 너비를 부모 요소에 맞춤 */
+    width: 100%; /* 입력 창 너비 */
     box-sizing: border-box; /* 패딩 포함 너비 계산 */
 }
 
@@ -80,7 +101,7 @@ header {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 100%; /* 버튼도 입력창 너비에 맞춤 */
+    width: 100%; /* 버튼 너비 */
     box-sizing: border-box;
 }
 

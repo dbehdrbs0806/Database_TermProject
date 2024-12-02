@@ -86,6 +86,31 @@ public class MemberService {
         memberRepository.save(member);
     }
 
+    // 회원정보 조회
+    public MemberDto getMemberDetails(String memberId) {
+        Member member = memberRepository.findByMemberId(memberId);
+        if (member == null) {
+            throw new IllegalArgumentException("해당 회원이 존재하지 않습니다.");
+        }
+        return convertToDto(member);
+    }
+
+    // 회원정보 수정
+    public void updateMemberInfo(MemberDto memberDto) {
+        Member member = memberRepository.findByMemberId(memberDto.getMemberId());
+        if (member == null) {
+            throw new IllegalArgumentException("해당 회원이 존재하지 않습니다.");
+        }
+
+        // 수정 가능한 정보 업데이트
+        member.setPassword(passwordEncoder.encode(memberDto.getPassword())); // 비밀번호 암호화 후 저장
+        member.setName(memberDto.getName());
+        member.setPhoneNumber(memberDto.getPhoneNumber());
+        member.setCardNumber(memberDto.getCardNumber());
+
+        memberRepository.save(member); // 변경 내용 저장
+    }
+
 
     // DTO와 ENtity를 변환할 때 사용하는 영역의 코드들
     // Entity -> DTO 변환

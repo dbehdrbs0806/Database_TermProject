@@ -20,9 +20,12 @@ public class ReservationSeat {
     ReservationSeatId에 겹치는 외부키 속성들 모두 정의
      */
 
-    @Column(name = "예매일시")
-    private Date reservationDate;
-
     @Column(name = "금액", length = 10, nullable = false)
     private String amount;
+
+    @Column(name = "회원번호", length = 10, nullable = false)
+    private String memberId;
+
+    @Column(name = "인원수", length = 10, nullable = false)
+    private String personCount;
 }

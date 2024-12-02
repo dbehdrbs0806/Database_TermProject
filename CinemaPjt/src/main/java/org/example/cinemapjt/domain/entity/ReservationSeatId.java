@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /*
@@ -18,11 +19,11 @@ ReservationSeatId
 @EqualsAndHashCode
 public class ReservationSeatId implements Serializable {
 
-    @Column(name = "영화번호", length = 10, nullable = false)
+    @Column(name = "영화번호", length = 200, nullable = false)
     private String movieId;
 
     @Column(name = "상영시간", nullable = false)
-    private Date showTime;
+    private LocalDateTime showTime;
 
     @Column(name = "상영관번호", length = 10, nullable = false)
     private String theaterId;
@@ -33,6 +34,4 @@ public class ReservationSeatId implements Serializable {
     @Column(name = "위치번호", length = 5, nullable = false)
     private String seatNumber;
 
-    @Column(name = "회원번호", length = 10, nullable = false)
-    private String memberId;
 }

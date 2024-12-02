@@ -1,7 +1,9 @@
 package org.example.cinemapjt.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
 
 @Entity
 @Table(name = "상영관좌석")
@@ -12,10 +14,20 @@ import lombok.*;
 @ToString
 public class TheaterSeat {
 
-    @EmbeddedId                                         // 외부키와 같은 복합키 사용을 지정
+    @EmbeddedId
     private TheaterSeatId id; // 복합키 객체
-    /* TheaterSeatId에서 필요한 속성을 모두 정의해놓음
-       그래서 TheaterSeatId를 생성하면 모든 속성을 가짐
-     */
+
+    @MapsId("scheduleId") // 복합 키의 부모 키인 ScheduleId와 매핑
+    @ManyToOne
+    @JoinColumns({
+            @JoinColumn(name = "영화번호", referencedColumnName = "영화번호", nullable = false),
+            @JoinColumn(name = "상영시간", referencedColumnName = "상영시간", nullable = false),
+            @JoinColumn(name = "상영관번호", referencedColumnName = "상영관번호", nullable = false)
+    })
+    @JsonIgnore // 순환 참조 방지
+    private Schedule schedule;
+
+    @Column(name = "예약유무", nullable = false)
+    private Boolean isReserved = false; // 기본값: 예약되지 않음
 
 }
